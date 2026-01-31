@@ -33,7 +33,7 @@ Build a scalable, production-ready data warehouse that consolidates sales, custo
 
 The project implements the industry-standard **Medallion Architecture**, separating data processing into three distinct layers:
 
-![image.png](attachment:e63e5e8b-1bdd-49b1-898e-6475e7e109e5:image.png)
+<img width="996" height="574" alt="image" src="https://github.com/user-attachments/assets/6524ff65-8469-44b7-9146-d7e1940d9031" />
 
 ## **Bronze Layer** (Raw Data)
 
@@ -62,7 +62,7 @@ The project implements the industry-standard **Medallion Architecture**, separa
 
 ## Schema Diagram
 
-![image.png](attachment:771bf389-65cd-46ff-a9dd-b85aad0371b9:image.png)
+<img width="1056" height="596" alt="image" src="https://github.com/user-attachments/assets/ece5b21a-3ac5-4950-a0c5-06580edb5db5" />
 
 ---
 
@@ -145,7 +145,7 @@ Central fact table capturing all transactional sales data.
 
 ## Source Systems Integration
 
-![image.png](attachment:abe64b95-e138-4779-a859-04a9b276ec7f:image.png)
+<img width="1139" height="611" alt="image" src="https://github.com/user-attachments/assets/a3b5718d-16a4-4543-a9d1-6b3f88a80923" />
 
 ## Integration Strategy
 
