@@ -49,10 +49,10 @@ CREATE TABLE gold.dim_products(
 	category_id nvarchar(50) ,
 	category nvarchar(50) ,
 	subcategory nvarchar(50) ,
-	maintenance nvarchar(50) ,
-	cost nvarchar(50),
+	cost int,
 	product_line nvarchar(50),
-	start_date nvarchar(50) 
+	product_start_date date,
+	maintenance nvarchar(50) ,
 );
 GO
 
@@ -62,10 +62,10 @@ CREATE TABLE gold.fact_sales(
 	customer_key nvarchar(50),
 	order_date nvarchar(50),
 	shipping_date nvarchar(50),
-	due_date nvarchar(50),
-	sales_amount nvarchar(50),
-	quantity nvarchar(50),
-	price nvarchar(50) 
+	delivery_due_date nvarchar(50),
+	price int,
+	sales_amount int,
+	sales_quantity int
 );
 GO
 
@@ -77,6 +77,9 @@ FROM 'C:\Users\Administrator\OneDrive\Desktop\Portfolio Building\Data Engineer\P
 WITH (
 	FIRSTROW = 2,
 	FIELDTERMINATOR = ',',
+	FORMAT = 'CSV',
+	CODEPAGE = '65001',
+	KEEPNULLS,
 	TABLOCK
 );
 GO
