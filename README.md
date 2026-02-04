@@ -193,17 +193,17 @@ The analytics layer is implemented entirely in SQL on top of the Gold star schem
 
 ### Business‑Ready Views
   - **gold.customer_report**: Consolidates customer‑level behaviour for Contoso Retail.
-            + Uses gold.fact_sales joined with gold.dim_customers.
-            + Aggregates total orders, total sales, total quantity, distinct products, last order date, and customer lifespan in months.
-            + Derives age from birth date and groups customers into age bands (Under 20, 20–35, 35–50, Above 50).
-            + Segments customers into VIP, Regular, and New based on lifespan and total spend.
-            + Computes key KPIs such as recency in months, average order value, and average monthly spend to support retention and CRM strategies. 
+            - Uses gold.fact_sales joined with gold.dim_customers.
+            - Aggregates total orders, total sales, total quantity, distinct products, last order date, and customer lifespan in months.
+            - Derives age from birth date and groups customers into age bands (Under 20, 20–35, 35–50, Above 50).
+            - Segments customers into VIP, Regular, and New based on lifespan and total spend.
+            - Computes key KPIs such as recency in months, average order value, and average monthly spend to support retention and CRM strategies. 
   - **gold.product_report**: Provides a complete product‑level performance view.
-            + Uses gold.fact_sales joined with gold.dim_products.
-            + Aggregates total orders, total sales, total quantity sold, distinct customers, and product lifespan in months.
-            + Calculates last order date, recency in months, average order value, and average monthly revenue per product.
-            + Segments products into High Performer, Mid Performer, and Low Performer based on how their sales compare with the global average (using window functions to derive thresholds).
-            + Helps merchandising and pricing teams identify products to promote, retain, or phase out. 
+            - Uses gold.fact_sales joined with gold.dim_products.
+            - Aggregates total orders, total sales, total quantity sold, distinct customers, and product lifespan in months.
+            - Calculates last order date, recency in months, average order value, and average monthly revenue per product.
+            - Segments products into High Performer, Mid Performer, and Low Performer based on how their sales compare with the global average (using window functions to derive thresholds).
+            - Helps merchandising and pricing teams identify products to promote, retain, or phase out. 
 
 ## Reusable Analysis Patterns
 Beyond the two main report views, the project includes a library of parameterizable SQL scripts that demonstrate common analytical patterns directly on the Gold layer:
