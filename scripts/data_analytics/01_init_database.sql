@@ -27,6 +27,12 @@ GO
 CREATE SCHEMA gold;
 GO
 
+CREATE SCHEMA customer_report;
+GO
+
+CREATE SCHEMA product_report;
+Go
+
 CREATE TABLE gold.dim_customers(
 	customer_key nvarchar(50),
 	customer_id nvarchar(50),
