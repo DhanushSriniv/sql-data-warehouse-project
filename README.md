@@ -1,6 +1,6 @@
-# **📊End-to-End SQL Data Engineering Project for Contoso Retail**
+# **📊 End-to-End SQL Data Engineering Project for Contoso Retail**
 
-Welcome to the **End-to-End SQL Data Engineering Project** repository! This is a comprehensive data warehousing solution demonstrating enterprise-grade design and implementation using the **Medallion Architecture** pattern, and this includes SQL analytics solution built for a fictional retail company, Contoso Retail, to centralize sales data, improve data quality, and enable self‑service analytics across teams.
+Welcome to the **End-to-End SQL Data Engineering Project** repository! This is a comprehensive data warehousing solution demonstrating enterprise-grade design and implementation using the **Medallion Architecture** pattern, and this includes SQL based analytics solution built for a fictional retail company, Contoso Retail, to centralize sales data, improve data quality, and enable self‑service analytics across teams.
 
 ---
 
@@ -188,22 +188,22 @@ Central fact table capturing all transactional sales data.
 | **Optimization** | Pre-aggregation and indexing |
 
 ---
-## Analytics Layer (SQL-Only)
+## 📊 Analytics Layer (SQL-Only)
 The analytics layer is implemented entirely in SQL on top of the Gold star schema. It uses a dedicated analytics database (DataWarehouseAnalytics) that consumes gold.fact_sales, gold.dim_customers, and gold.dim_products and exposes business‑friendly views and query patterns.
 
 ### Business‑Ready Views
   - **gold.customer_report**: Consolidates customer‑level behaviour for Contoso Retail.
-            - Uses gold.fact_sales joined with gold.dim_customers.
-            - Aggregates total orders, total sales, total quantity, distinct products, last order date, and customer lifespan in months.
-            - Derives age from birth date and groups customers into age bands (Under 20, 20–35, 35–50, Above 50).
-            - Segments customers into VIP, Regular, and New based on lifespan and total spend.
-            - Computes key KPIs such as recency in months, average order value, and average monthly spend to support retention and CRM strategies. 
+      - Uses gold.fact_sales joined with gold.dim_customers.
+      - Aggregates total orders, total sales, total quantity, distinct products, last order date, and customer lifespan in months.
+      - Derives age from birth date and groups customers into age bands (Under 20, 20–35, 35–50, Above 50).
+      - Segments customers into VIP, Regular, and New based on lifespan and total spend.
+      - Computes key KPIs such as recency in months, average order value, and average monthly spend to support retention and CRM strategies. 
   - **gold.product_report**: Provides a complete product‑level performance view.
-            - Uses gold.fact_sales joined with gold.dim_products.
-            - Aggregates total orders, total sales, total quantity sold, distinct customers, and product lifespan in months.
-            - Calculates last order date, recency in months, average order value, and average monthly revenue per product.
-            - Segments products into High Performer, Mid Performer, and Low Performer based on how their sales compare with the global average (using window functions to derive thresholds).
-            - Helps merchandising and pricing teams identify products to promote, retain, or phase out. 
+      - Uses gold.fact_sales joined with gold.dim_products.
+      - Aggregates total orders, total sales, total quantity sold, distinct customers, and product lifespan in months.
+      - Calculates last order date, recency in months, average order value, and average monthly revenue per product.
+      - Segments products into High Performer, Mid Performer, and Low Performer based on how their sales compare with the global average (using window functions to derive thresholds).
+      - Helps merchandising and pricing teams identify products to promote, retain, or phase out. 
 
 ## Reusable Analysis Patterns
 Beyond the two main report views, the project includes a library of parameterizable SQL scripts that demonstrate common analytical patterns directly on the Gold layer:
@@ -253,6 +253,8 @@ This SQL‑only analytics layer stays intentionally lean compared with the engin
 - Analysts get consistent KPIs (recency, lifetime value, average order value, monthly revenue, category contribution) derived from governed warehouse tables.
 - Data engineers can demonstrate ownership of the full pipeline—from raw CSV ingestion through Medallion layers to concrete, business‑oriented insights for Contoso Retail.
 
+>[!Note]
+> Sample outputs can be reproduced by running scripts in scripts/analytics/
 ---
 
 ## 🛠️ Technology Stack
@@ -309,7 +311,6 @@ This project showcases comprehensive expertise in:
 | **Data Modeling** | Dimensional modeling, star schema design, fact/dimension tables |
 | **Database Design** | Normalization, indexing strategies, schema optimization, data dictionary |
 | **Data Governance** | Data quality, documentation, naming conventions, metadata management |
-| **BI Fundamentals** | Analytics-ready data design, reporting optimization, dimensional analysis |
 | **Tools & Technologies** | SQL Server, SSMS, Git/GitHub, Draw.io, Markdown |
 | **Architecture & Design** | Medallion Architecture, multi-layer design, source system integration |
 
@@ -346,5 +347,5 @@ This project is licensed under the **MIT License.**
 | Silver Layer Development | ✅ Complete | 100% |
 | Gold Layer Development | ✅ Complete | 100% |
 | Data Quality Testing | ✅ Complete | 100% |
-| Documentation | 🟡 In Progress | 70% |
-| Analytics Layer | 🟡 In Progress | 60% |
+| Documentation | ✅ Complete | 100% |
+| Analytics Layer | ✅ Complete | 100% |
