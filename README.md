@@ -189,10 +189,70 @@ Central fact table capturing all transactional sales data.
 
 ---
 ## Analytics Layer (SQL-Only)
-To keep the focus on data engineering while still demonstrating end‑to‑end value, analytics is implemented directly in SQL, typically in a separate analytics database (DataWarehouseAnalytics):
-### Views
-  - gold.customer_report
-  - gold.product_report
+The analytics layer is implemented entirely in SQL on top of the Gold star schema. It uses a dedicated analytics database (DataWarehouseAnalytics) that consumes gold.fact_sales, gold.dim_customers, and gold.dim_products and exposes business‑friendly views and query patterns.
+
+### Business‑Ready Views
+  - **gold.customer_report**: Consolidates customer‑level behaviour for Contoso Retail.
+            + Uses gold.fact_sales joined with gold.dim_customers.
+            + Aggregates total orders, total sales, total quantity, distinct products, last order date, and customer lifespan in months.
+            + Derives age from birth date and groups customers into age bands (Under 20, 20–35, 35–50, Above 50).
+            + Segments customers into VIP, Regular, and New based on lifespan and total spend.
+            + Computes key KPIs such as recency in months, average order value, and average monthly spend to support retention and CRM strategies. 
+  - **gold.product_report**: Provides a complete product‑level performance view.
+            + Uses gold.fact_sales joined with gold.dim_products.
+            + Aggregates total orders, total sales, total quantity sold, distinct customers, and product lifespan in months.
+            + Calculates last order date, recency in months, average order value, and average monthly revenue per product.
+            + Segments products into High Performer, Mid Performer, and Low Performer based on how their sales compare with the global average (using window functions to derive thresholds).
+            + Helps merchandising and pricing teams identify products to promote, retain, or phase out. 
+
+## Reusable Analysis Patterns
+Beyond the two main report views, the project includes a library of parameterizable SQL scripts that demonstrate common analytical patterns directly on the Gold layer:
+
+### Ranking analysis (05_ranking_analysis.sql)
+
+- Ranks products and customers using ROW_NUMBER and DENSE_RANK.
+- Produces top‑N and bottom‑N lists, such as:
+    - Top 5 products by revenue.
+    - Top 10 customers by total revenue.
+    - Bottom 3 customers by number of orders.
+- Supports performance monitoring and targeted campaigns.
+
+### Change‑over‑time analysis (06_change_over_time.sql)
+
+- Aggregates sales, customers, and quantities by month.
+- Builds a view that flags the highest and lowest sales months per year using ranking and window aggregates.
+- Enables Contoso to track seasonality and year‑to‑year shifts in demand.
+
+### Cumulative analysis (07_cummulative_analysis.sql)
+
+- Computes running yearly totals for sales and quantity, as well as running averages for price at a monthly grain.
+- Shows whether the business is accelerating or slowing down within each year.
+
+### Performance analysis (08_performance_analysis.sql)
+
+- Compares each product’s yearly sales to:
+    - Its own long‑term average.
+    - The previous year’s sales (YoY).
+- Labels each product/year combination as Above Avg, Below Avg, or Avg, and as Increase, Decrease, or Stable year‑over‑year.
+
+### Proportional (part‑to‑whole) analysis (09_proportional_analysis.sql)
+
+- Calculates the share of total sales contributed by each product category.
+- Returns both absolute sales and percentage‑of‑total metrics so Contoso can see which categories drive the business.
+
+### Measure‑based segmentation (10_measure_segmentation.sql)
+
+- Groups products into cost bands (e.g., Below 100, 100–500, 500–1000, 1000–2000, Above 2000) and counts products per band.
+- Segments customers into VIP, Regular, and New based on lifespan and total spending, then counts customers per segment.
+- Supports pricing strategy and customer‑tier targeting.
+
+### Purpose of the Analytics Layer
+This SQL‑only analytics layer stays intentionally lean compared with the engineering work, but it proves that the Gold star schema is truly consumption‑ready:
+
+- Business users and BI tools can connect directly to the views and run analyses without complex joins.
+- Analysts get consistent KPIs (recency, lifetime value, average order value, monthly revenue, category contribution) derived from governed warehouse tables.
+- Data engineers can demonstrate ownership of the full pipeline—from raw CSV ingestion through Medallion layers to concrete, business‑oriented insights for Contoso Retail.
+
 ---
 
 ## 🛠️ Technology Stack
