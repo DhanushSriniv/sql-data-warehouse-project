@@ -1,14 +1,21 @@
-# **📊SQL Data Warehouse and Analytics Project**
+# **📊End-to-End SQL Data Engineering Project for Contoso Retail**
 
-Welcome to the **SQL Data Warehouse and Analytics Project** repository! This is a comprehensive data warehousing solution demonstrating enterprise-grade design and implementation using the **Medallion Architecture** pattern.
+Welcome to the **End-to-End SQL Data Engineering Project** repository! This is a comprehensive data warehousing solution demonstrating enterprise-grade design and implementation using the **Medallion Architecture** pattern, and this includes end‑to‑end data engineering and SQL analytics solution built for a fictional retail company, Contoso Retail, to centralize sales data, improve data quality, and enable self‑service analytics across teams.
 
 ---
 
 ## 📋 Project Overview
 
-## Objective
-
-Build a scalable, production-ready data warehouse that consolidates sales, customer, and product data from heterogeneous sources (ERP and CRM systems) into a unified, analytics-ready repository.
+## Business Context & Objectives
+Contoso Retail operates multiple sales channels and maintains separate CRM and ERP systems. Data is fragmented, definitions differ between systems, and business users struggle to answer basic questions such as:
+  - Who are our most valuable customers?
+  - Which products and categories drive revenue and margin?
+  - How are sales trending across time and regions?
+This project delivers a SQL Server–based data platform that:
+  - Consolidates CRM and ERP data into a governed enterprise data warehouse.
+  - Cleanses and standardizes data via a Medallion (Bronze/Silver/Gold) architecture.
+  - Exposes an analytics‑ready star schema for BI and ad‑hoc analysis.
+  - Implements key SQL analytics to support Contoso’s sales, finance, and merchandising teams.
 
 ## Key Deliverables
 
@@ -17,14 +24,8 @@ Build a scalable, production-ready data warehouse that consolidates sales, custo
 - ✅ **Gold Layer**: Star schema with dimension and fact tables for analytics
 - ✅ **Data Model**: Complete star schema with relationships and optimizations
 - ✅ **Documentation**: Architecture diagrams, data catalog, and naming conventions
-- 📊 **Analytics Layer**: Sales, customer, and product insights (In Progress)
-
-## Current Status
-
-**Completed**: Bronze, Silver, and Gold layers with fully normalized star schema
-
-**Next Phase**: Analytics and Reporting with SQL-based insights
-
+- 📊 **Analytics Layer**: Sales, customer, and product insights
+  
 ---
 
 ## 🏗️ Architecture Overview
@@ -186,6 +187,12 @@ Central fact table capturing all transactional sales data.
 | **Design Pattern** | Star Schema with surrogate keys |
 | **Optimization** | Pre-aggregation and indexing |
 
+---
+## Analytics Layer (SQL-Only)
+To keep the focus on data engineering while still demonstrating end‑to‑end value, analytics is implemented directly in SQL, typically in a separate analytics database (DataWarehouseAnalytics):
+### Views
+  - gold.customer_report
+  - gold.product_report
 ---
 
 ## 🛠️ Technology Stack
