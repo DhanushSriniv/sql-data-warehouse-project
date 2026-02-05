@@ -1,6 +1,6 @@
-# **📊 End-to-End SQL Data Engineering Project for Contoso Retail**
+# **📊 End-to-End Batch SQL Data Engineering Project for Contoso Retail**
 
-Welcome to the **End-to-End SQL Data Engineering Project** repository! This is a comprehensive data warehousing solution demonstrating enterprise-grade design and implementation using the **Medallion Architecture** pattern, and this includes SQL based analytics solution built for a fictional retail company, Contoso Retail, to centralize sales data, improve data quality, and enable self‑service analytics across teams.
+Welcome to the **End-to-End Batch SQL Data Engineering Project** repository! This is a comprehensive data warehousing solution demonstrating enterprise-grade design and implementation using the **Medallion Architecture** pattern, and this includes SQL based analytics solution built for a fictional retail company, Contoso Retail, to centralize sales data, improve data quality, and enable self‑service analytics across teams.
 
 ---
 
